@@ -15,7 +15,7 @@ def parse_template(template_path):
 
 
 def find_expressions(mx3):
-    matches = re.finditer(r"\{(.*?)\}", mx3)
+    matches = re.finditer(r"\"\{(.*?)\}\"", mx3)
     expressions = []
     for match in matches:
         extracted_text = match.group(1)
@@ -44,7 +44,7 @@ def generate_files(parent_dir, mx3, expressions):
         new_mx3 = mx3
         for item, exp in zip(combination, expressions):
             new_mx3 = new_mx3.replace(
-                "{" + exp["original"] + "}", f"{item:{exp['fmt']}}"
+                "\"{" + exp["original"] + "}\"", f"{item:{exp['fmt']}}"
             )
 
         os.makedirs(os.path.dirname(full_path), exist_ok=True)

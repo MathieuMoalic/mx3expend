@@ -11,8 +11,8 @@ pip install git+https://github.com/MathieuMoalic/mx3expend
 # Usage
 After installation, the application can be launched by running its command in the terminal:
 `mx3expend /path/to/template/file`
-The template file will be parse for such expressions:
-`{prefix;range;format;suffix}`
+The template file will be parse for such expressions (Don't forget the quotation marks):
+`"{prefix;range;format;suffix}"`
 where:
 `prefix` is a string that will be used in front of the value in the path name
 `range` is a python or numpy range that will be expended (`np.arange`, `np.linspace`, ...)
@@ -24,7 +24,7 @@ You can have more than one expression per template. They will all be resolved bu
 ## Example
 `/home/mat/template.mx3`
 ```go
-Msat = {msat_;np.arange(800,1001,100);0>4.0f;}e3
+Msat = "{msat_;np.arange(800,1001,100);0>4.0f;}"e3
 ```
 `mx3expend /home/mat/template.mx3`
 will expend to:
